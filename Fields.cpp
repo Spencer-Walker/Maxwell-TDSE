@@ -35,5 +35,4 @@ Fields::~Fields()
 double Fields::gaussian_beam(double z, double t, double E0, double z0, double fwhm)
 {
   return E0*pow(2.0,-4.0*pow(((z-c*t)/fwhm),2))*cos(z-c*t);
-
 }

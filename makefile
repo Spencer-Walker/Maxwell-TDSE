@@ -1,7 +1,7 @@
 SHELL = /bin/sh
 CXX = mpicxx
-CXXFLAGS =  -g -std=c++11 -fopenmp
-binaries = Maxwell-TDSE.o Fields.o Coordinate_system.o Gas.o Maxwell.o Linear_algebra.o Complex.o
+CXXFLAGS =  -g -std=c++11 -fopenmp -I../src 
+binaries = Maxwell-TDSE.o Fields.o Coordinate_system.o Gas.o Maxwell.o Linear_algebra.o Complex.o 
 
 Maxwell-TDSE: $(binaries)
 	$(CXX) $(CXXFLAGS) -o Maxwell-TDSE $(binaries)

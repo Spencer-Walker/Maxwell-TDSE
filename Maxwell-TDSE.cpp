@@ -11,7 +11,7 @@
 #include "Gas.h"
 #include "Linear_algebra.h"
 #include "Complex.h"
-
+#include <mkl>
 int main(int argc, char *argv[]) {
   int numprocs, rank, namelen;
   char processor_name[MPI_MAX_PROCESSOR_NAME];
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
   double dz = 0.1;
   double r = 1.0;
   double dt = dz*r/137.0;
-  int nt = floor(1.0/dt);
+  int nt = floor(0.001/dt);
   double x_max = 50;
   double dx = 0.1;
   Coordinate_system coord(z_max, dz,x_max, dx);
@@ -85,7 +85,6 @@ int main(int argc, char *argv[]) {
   double* tmp;
   Linear_algebra lin = Linear_algebra();
   Maxwell maxwell(&coord,&fields, &gas, dt);
-
 
   int iz;
   int ix;
