@@ -162,8 +162,6 @@ void Linear_algebra::cn_lhs(double dt,double dx, Complex* VV, Complex* B, Comple
 {
 	double wr;
 	double wi;
-	double t1r;
-	double t1i;
 	double* V = VV->z;
 	double* b = B->z;
 	double* psi = PSI->z;

@@ -1,7 +1,7 @@
 SHELL = /bin/sh
 CXX = mpicxx
-CXXFLAGS =  -g -std=c++11 -fopenmp -I../src -I/usr/local/include/ -I/home/becker/spwa4419/local/eigen/include/eigen3 -I/home/becker/spwa4419/Documents/spectra/include
-binaries = Maxwell-TDSE.o Fields.o Coordinate_system.o Gas.o Maxwell.o Linear_algebra.o Complex.o 
+CXXFLAGS = -Wall -O3 -g -std=c++11 -fopenmp -I../src -I/usr/local/include/ -I/home/becker/spwa4419/local/eigen/include/eigen3 -I/home/becker/spwa4419/Documents/spectra/include
+binaries = Maxwell-TDSE.o Fields.o Coordinate_system.o Gas.o Maxwell.o Linear_algebra.o Complex.o TDSE.o
 
 Maxwell-TDSE: $(binaries)
 	$(CXX) $(CXXFLAGS) -o Maxwell-TDSE $(binaries)
@@ -21,6 +21,8 @@ Linear_algebra.o: Complex.h Linear_algebra.h
 
 Complex.o: Complex.h
 
+TDSE.o: TDSE.h Complex.h Gas.h Coordinate_system.h Fields.h
+
 .PHONY: clean
 clean:
-	rm -f $(binaries) *.o *.txt
+	rm -f $(binaries) *.o *.txt *.out 

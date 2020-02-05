@@ -3,6 +3,8 @@
 #include "Gas.h"
 #include <cmath>
 #include <fstream>
+#include "Complex.h"
+#include "Linear_algebra.h"
 #include <omp.h>
 
 #ifndef TDSE_H
@@ -13,7 +15,8 @@ class TDSE
     Coordinate_system *coord; 
     Fields *fields;
     Gas *gas;
-    double dt;
+    double* tmp;
+		double dt;
     double c = 137.035999084;
 
     // Constructor 
@@ -21,13 +24,14 @@ class TDSE
     // Destructor
     ~TDSE();
 
-    void timestep();
+    void timestep(Complex* VV, Complex* B, Complex* PSI, Complex* RHS, Linear_algebra* lin,
+                    double dt, double E);
 
-    double dipole();
+		double dipole(Complex* PSI);
 
-    double dipole_velocity();
+    //double dipole_velocity();
 
-    double dipole_acceleration();n
+    //double dipole_acceleration();
 
 };
 #endif
